@@ -2,12 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border:1px solid black; */
 }
 :root {
-  --color-off-black: #343231;
-  --color-off-white: #f8f0e3;
+    --background-dark: #202020;
 
+    --color-accent: #4ec2ff;
+    --color-button-light: #3d3d3d;
+    --color-button-dark: #333333;
+
+    --color-text-white: #fefefe;
+    --color-text-muted: #4d4d4d;
   
   --space-l:1rem;
 
@@ -22,42 +26,93 @@
 }
 a{
     text-decoration: none;
-    color:var(--color-off-white)
+    color:var(--color-text-white)
 }
 
 
 
-
+/* main-container Styling */
 .container {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-text-white);
 }
 .calculator {
   max-width: min(1000px, 90vw);
   width: 100%;
   height: 60%;
-  background-color: var(--color-off-black);
+  background-color: var(--background-dark);
   display: flex;
 }
+
+
+
+/* calculaor left design */
 .calculator__main {
   flex: 6;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
 }
 .calculator__header {
     padding: var(--space-l);
   }
 .calculator__header {
   padding: var(--space-l);
+  flex:2;
 }
 
 .calculator__display {
+  flex:3;
   text-align: right;
   padding: var(--space-l);
   font-size: var(--font-size-xl);
-  background-color: aqua;
 }
+
+
+.calculator__keys
+{
+  flex:16;
+  display: flex;
+  flex-direction: column;
+}
+.calculator__section--modes{
+  flex:1;
+  display: flex;
+  padding:0 var(--space-l);
+  align-items: center;
+  gap: var(--gap-l);
+}
+.calculator__section--memory{
+  flex: 1;
+  display: flex;
+  justify-content: space-between ;
+  padding:0 var(--space-l);
+  align-items: center;
+}
+.calculator__section--main{
+  flex:8;
+  display: flex;
+  flex-direction: column;
+  .calculator__trig{
+    border-top:1px solid var(--color-button-light);
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-l);
+    padding: 0 var(--space-l);
+  }
+  .calculator__grid{
+    flex:9;
+    display:grid ;
+    grid-template: repeat(7,1fr)/repeat(5,1fr);
+    border:1px solid blue;
+  }
+}
+
+
+/* right section having history */
 .calculator__history {
   flex: 4;
   display: flex;
@@ -80,7 +135,6 @@ a{
 }
 .history__content{
   flex:9;
-  background-color: aqua;
   overflow: auto;
   scrollbar-width: none;
   p {
