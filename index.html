@@ -20,32 +20,32 @@
       <section class="calculator__main">
         <header class="calculator__header"><h1>Scientific</h1></header>
         <div class="calculator__display">
-          <p>0</p>
+          <input type="text" id="display" class ="calculator__input" value="0" readonly>
         </div>
         <div class="calculator__keys keys">
           <section class="calculator__section calculator__section--modes">
-            <button class="calculator__btn">DEG</button>
-            <button class="calculator__btn">F-E</button>
+            <button class="calculator__btn blocked">DEG</button>
+            <button class="calculator__btn blocked">F-E</button>
           </section>
           <section class="calculator__section calculator__section--memory">
             <button
-              class="calculator__btn muted"
+              class="calculator__btn muted blocked"
             >
               MC
             </button>
             <button
-              class="calculator__btn muted"
+              class="calculator__btn muted blocked"
             >
               MR
             </button>
-            <button class="calculator__btn">M+</button>
-            <button class="calculator__btn">M-</button>
-            <button class="calculator__btn">MS</button>
+            <button class="calculator__btn blocked">M+</button>
+            <button class="calculator__btn blocked">M-</button>
+            <button class="calculator__btn blocked">MS</button>
           </section>
           <section class="calculator__section calculator__section--main">
             <div class="calculator__trig">
-              <div class="calculator__trigonometry">
-                <button class="calculator__btn">
+              <div class="calculator__trigonometry ">
+                <button class="calculator__btn blocked">
                   Trigonometry <i class="fa-solid fa-angle-down"></i>
                 </button>
                 <div class="options">
@@ -59,8 +59,8 @@
                   <button class="calculator__btn bordered">8</button>
                 </div>
               </div>
-              <div class="calculator__functions">
-                <button class="calculator__btn ">
+              <div class="calculator__functions ">
+                <button class="calculator__btn blocked">
                   Functions <i class="fa-solid fa-angle-down"></i>
                 </button>
                 <div class="options">

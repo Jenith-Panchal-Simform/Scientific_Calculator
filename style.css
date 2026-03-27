@@ -49,7 +49,9 @@ a {
   text-decoration: none;
   color: var(--color-text-white);
 }
-
+button:hover {
+  cursor: pointer;
+}
 /* main-container Styling */
 .container {
   height: 100vh;
@@ -61,9 +63,10 @@ a {
 .calculator {
   max-width: min(1000px, 90vw);
   width: 100%;
-  height: 60%;
+  height: 70vh;
   background-color: var(--background-dark);
   display: flex;
+  overflow: auto;
 }
 
 /* calculaor left design */
@@ -81,9 +84,19 @@ a {
   flex: 3;
   text-align: right;
   padding: 0 var(--space-md);
-  font-size: var(--fs-3xl);
 }
-
+.calculator__input {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  font-size: var(--fs-3xl);
+  background: none;
+  border: none;
+  color: var(--color-text-white);
+}
+.calculator__input:focus {
+  outline: none;
+}
 .calculator__keys {
   flex: 16;
   display: flex;
@@ -96,12 +109,18 @@ a {
   align-items: center;
   gap: var(--gap-md);
 }
+.calculator__section--modes:hover{
+  cursor: not-allowed;
+}
 .calculator__section--memory {
   flex: 1;
   display: flex;
   justify-content: space-between;
   padding: 0 var(--space-md);
   align-items: center;
+}
+.calculator__section--memory:hover{
+  cursor:not-allowed
 }
 .calculator__section--main {
   flex: 8;
@@ -114,18 +133,20 @@ a {
     align-items: center;
     gap: var(--gap-md);
     padding: 0 var(--space-md);
-    .calculator__trigonometry,.calculator__functions{
+    .calculator__trigonometry,
+    .calculator__functions {
       position: relative;
-      display: none;
     }
-    .options
-    { 
+    .calculator__functions:hover,.calculator__trigonometry:hover{
+      cursor:not-allowed
+    }
+    .options {
       position: absolute;
       background-color: var(--color-button-dark);
       padding: var(--space-xxs);
       display: grid;
-      grid-template: repeat(2,1fr) /repeat(4,1fr) ;
-
+      grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+      display: none;
     }
   }
   .calculator__grid {
@@ -133,7 +154,7 @@ a {
     display: grid;
     grid-template: repeat(7, 1fr) / repeat(5, 1fr);
     padding: var(--space-xs);
-    gap:var(--space-xxs)
+    gap: var(--space-xxs);
   }
 }
 
@@ -145,28 +166,40 @@ a {
   color: var(--color-text-white);
   font-size: var(--fs-md);
 }
+.blocked {
+  pointer-events: none;
+}
 .muted {
   color: var(--color-text-muted);
-} 
+}
 
-.bordered{
-  background-color:var(--color-button-light);
+.bordered {
+  background-color: var(--color-button-light);
   border-radius: var(--radius-sm);
 }
 
-.primary
-{
+.primary {
   background-color: var(--color-button-dark);
-  border-radius:var(--radius-sm) ;
+  border-radius: var(--radius-sm);
   font-size: var(--fs-lg);
 }
-.primary-muted{
+.primary:hover {
   background-color: var(--color-button-light);
 }
-.equals{
+.primary-muted {
+  background-color: var(--color-button-light);
+}
+.primary-muted:hover {
+  background-color: var(--color-button-dark);
+}
+.equals {
   background-color: var(--color-accent);
   color: var(--color-button-dark);
 }
+.equals:hover {
+  background-color: var(--color-text-white);
+}
+
 /* right section having history */
 .calculator__history {
   flex: 4;
