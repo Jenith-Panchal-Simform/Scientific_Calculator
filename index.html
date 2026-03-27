@@ -16,206 +16,168 @@
   </head>
   <body class="container">
     <!-- body -> parent container -->
-    <main class="calculator">
-      <section class="calculator__main">
-        <header class="calculator__header"><h1>Scientific</h1></header>
-        <div class="calculator__display">
-          <input type="text" id="display" class ="calculator__input" value="0" readonly>
+    <main class="calculator" id="calculator">
+  <section class="calculator__main" id="calculator-main">
+    
+    <header class="calculator__header" id="header">
+      <i class="fa-solid fa-bars icon-hidden" id="menu-toggle"></i>  
+      <h1>Scientific</h1>
+    </header>
+
+    <div class="calculator__display" id="display-container">
+      <input 
+        type="text" 
+        id="display" 
+        class="calculator__input" 
+        value="0" 
+        readonly
+      >
+    </div>
+
+    <div class="calculator__keys keys" id="keys">
+      
+      <!-- MODES -->
+      <section class="calculator__section calculator__section--modes" id="modes">
+        <button class="calculator__btn blocked" id="deg-btn">DEG</button>
+        <button class="calculator__btn blocked" id="fe-btn">F-E</button>
+      </section>
+
+      <!-- MEMORY -->
+      <section class="calculator__section calculator__section--memory" id="memory">
+        <button class="calculator__btn muted blocked" id="mc">MC</button>
+        <button class="calculator__btn muted blocked" id="mr">MR</button>
+        <button class="calculator__btn blocked" id="mplus">M+</button>
+        <button class="calculator__btn blocked" id="mminus">M-</button>
+        <button class="calculator__btn blocked" id="ms">MS</button>
+      </section>
+
+      <!-- MAIN -->
+      <section class="calculator__section calculator__section--main" id="main-section">
+        
+        <!-- DROPDOWNS -->
+        <div class="calculator__trig" id="trig-container">
+          
+          <div class="calculator__trigonometry" id="trigonometry">
+            <button class="calculator__btn blocked" id="trig-toggle">
+              Trigonometry <i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="options" id="trig-options">
+              <button class="calculator__btn bordered">1</button>
+              <button class="calculator__btn bordered">2</button>
+              <button class="calculator__btn bordered">3</button>
+              <button class="calculator__btn bordered">4</button>
+              <button class="calculator__btn bordered">5</button>
+              <button class="calculator__btn bordered">6</button>
+              <button class="calculator__btn bordered">7</button>
+              <button class="calculator__btn bordered">8</button>
+            </div>
+          </div>
+
+          <div class="calculator__functions" id="functions">
+            <button class="calculator__btn blocked" id="func-toggle">
+              Functions <i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="options" id="func-options">
+              <button class="calculator__btn bordered">1</button>
+              <button class="calculator__btn bordered">2</button>
+              <button class="calculator__btn bordered">3</button>
+              <button class="calculator__btn bordered">4</button>
+              <button class="calculator__btn bordered">5</button>
+              <button class="calculator__btn bordered">6</button>
+              <button class="calculator__btn bordered">7</button>
+              <button class="calculator__btn bordered">8</button>
+            </div>
+          </div>
+
         </div>
-        <div class="calculator__keys keys">
-          <section class="calculator__section calculator__section--modes">
-            <button class="calculator__btn blocked">DEG</button>
-            <button class="calculator__btn blocked">F-E</button>
-          </section>
-          <section class="calculator__section calculator__section--memory">
-            <button
-              class="calculator__btn muted blocked"
-            >
-              MC
-            </button>
-            <button
-              class="calculator__btn muted blocked"
-            >
-              MR
-            </button>
-            <button class="calculator__btn blocked">M+</button>
-            <button class="calculator__btn blocked">M-</button>
-            <button class="calculator__btn blocked">MS</button>
-          </section>
-          <section class="calculator__section calculator__section--main">
-            <div class="calculator__trig">
-              <div class="calculator__trigonometry ">
-                <button class="calculator__btn blocked">
-                  Trigonometry <i class="fa-solid fa-angle-down"></i>
-                </button>
-                <div class="options">
-                  <button class="calculator__btn bordered">1</button>
-                  <button class="calculator__btn bordered">2</button>
-                  <button class="calculator__btn bordered">3</button>
-                  <button class="calculator__btn bordered">4</button>
-                  <button class="calculator__btn bordered">5</button>
-                  <button class="calculator__btn bordered">6</button>
-                  <button class="calculator__btn bordered">7</button>
-                  <button class="calculator__btn bordered">8</button>
-                </div>
-              </div>
-              <div class="calculator__functions ">
-                <button class="calculator__btn blocked">
-                  Functions <i class="fa-solid fa-angle-down"></i>
-                </button>
-                <div class="options">
-                  <button class="calculator__btn bordered">1</button>
-                  <button class="calculator__btn bordered">2</button>
-                  <button class="calculator__btn bordered">3</button>
-                  <button class="calculator__btn bordered">4</button>
-                  <button class="calculator__btn bordered">5</button>
-                  <button class="calculator__btn bordered">6</button>
-                  <button class="calculator__btn bordered">7</button>
-                  <button class="calculator__btn bordered">8</button>
-                </div>
-              </div>
-            </div>
-            <div class="calculator__grid">
-              <button class="calculator__btn primary">2<sup>nd</sup></button
-              ><button class="calculator__btn primary">&pi;</button
-              ><button class="calculator__btn primary">e</button
-              ><button class="calculator__btn primary">c</button
-              ><button class="calculator__btn primary"><i class="fa-solid fa-delete-left"></i></button
-              ><button class="calculator__btn primary">x<sup>2</sup></button
-              ><button class="calculator__btn primary">1/x</button
-              ><button class="calculator__btn primary">|x|</button
-              ><button class="calculator__btn primary">exp</button
-              ><button class="calculator__btn primary">mod</button
-              ><button class="calculator__btn primary">&radic;x</button
-              ><button class="calculator__btn primary">(</button
-              ><button class="calculator__btn primary">)</button
-              ><button class="calculator__btn primary">n!</button
-              ><button class="calculator__btn primary">/</button
-              ><button class="calculator__btn primary">x<sup>y</sup></button
-              ><button class="calculator__btn primary primary-muted">7</button
-              ><button class="calculator__btn primary primary-muted">8</button
-              ><button class="calculator__btn primary primary-muted">9</button
-              ><button class="calculator__btn primary">X</button
-              ><button class="calculator__btn primary">10<sup>x</sup></button
-              ><button class="calculator__btn primary primary-muted">4</button
-              ><button class="calculator__btn primary primary-muted">5</button
-              ><button class="calculator__btn primary primary-muted">6</button
-              ><button class="calculator__btn primary">-</button
-              ><button class="calculator__btn primary">log</button
-              ><button class="calculator__btn primary primary-muted">1</button
-              ><button class="calculator__btn primary primary-muted">2</button
-              ><button class="calculator__btn primary primary-muted">3</button
-              ><button class="calculator__btn primary">+</button
-              ><button class="calculator__btn primary">ln</button
-              ><button class="calculator__btn primary primary-muted">+/-</button
-              ><button class="calculator__btn primary primary-muted" >0</button
-              ><button class="calculator__btn primary primary-muted">.</button
-              ><button class="calculator__btn primary equals">=</button>
-            </div>
-          </section>
+
+        <!-- BUTTON GRID -->
+        <div class="calculator__grid" id="button-grid">
+
+          <button class="calculator__btn primary" data-value="2nd">2<sup>nd</sup></button>
+          <button class="calculator__btn primary" data-value="pi">&pi;</button>
+          <button class="calculator__btn primary" data-value="e">e</button>
+          <button class="calculator__btn primary" data-action="clear">c</button>
+          <button class="calculator__btn primary" data-action="delete"><i class="fa-solid fa-delete-left"></i></button>
+
+          <button class="calculator__btn primary" data-value="x2">x<sup>2</sup></button>
+          <button class="calculator__btn primary" data-value="1/x">1/x</button>
+          <button class="calculator__btn primary" data-value="abs">|x|</button>
+          <button class="calculator__btn primary" data-value="exp">exp</button>
+          <button class="calculator__btn primary" data-value="%">mod</button>
+
+          <button class="calculator__btn primary" data-value="sqrt">&radic;x</button>
+          <button class="calculator__btn primary" data-value="(">(</button>
+          <button class="calculator__btn primary" data-value=")">)</button>
+          <button class="calculator__btn primary" data-value="fact">n!</button>
+          <button class="calculator__btn primary" data-value="/">/</button>
+
+          <button class="calculator__btn primary" data-value="^">x<sup>y</sup></button>
+          <button class="calculator__btn primary primary-muted" data-value="7">7</button>
+          <button class="calculator__btn primary primary-muted" data-value="8">8</button>
+          <button class="calculator__btn primary primary-muted" data-value="9">9</button>
+          <button class="calculator__btn primary" data-value="*">X</button>
+
+          <button class="calculator__btn primary" data-value="10^x">10<sup>x</sup></button>
+          <button class="calculator__btn primary primary-muted" data-value="4">4</button>
+          <button class="calculator__btn primary primary-muted" data-value="5">5</button>
+          <button class="calculator__btn primary primary-muted" data-value="6">6</button>
+          <button class="calculator__btn primary" data-value="-">-</button>
+
+          <button class="calculator__btn primary" data-value="log">log</button>
+          <button class="calculator__btn primary primary-muted" data-value="1">1</button>
+          <button class="calculator__btn primary primary-muted" data-value="2">2</button>
+          <button class="calculator__btn primary primary-muted" data-value="3">3</button>
+          <button class="calculator__btn primary" data-value="+">+</button>
+
+          <button class="calculator__btn primary" data-value="ln">ln</button>
+          <button class="calculator__btn primary primary-muted" data-value="+/-">+/-</button>
+          <button class="calculator__btn primary primary-muted" data-value="0">0</button>
+          <button class="calculator__btn primary primary-muted" data-value=".">.</button>
+          <button class="calculator__btn primary equals" id="equals" data-action="calculate">=</button>
+
         </div>
       </section>
-      <aside class="calculator__history history">
-        <nav class="history__navigation">
-          <ul class="history__navigation-list">
-            <li><a href="#">History</a></li>
-            <li><a href="#">Memory</a></li>
-          </ul>
-        </nav>
-        <div class="history__content">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-            accusamus beatae deleniti illum mollitia. Rerum adipisci, reiciendis
-            sit vel unde voluptas amet, harum, voluptates quos voluptatum
-            consequuntur fugit dicta saepe? Iure ad, voluptas perspiciatis
-            perferendis soluta, magni natus temporibus laudantium vero quisquam
-            velit, distinctio nihil officia fuga enim. Atque possimus excepturi,
-            itaque error quae velit aperiam voluptatibus voluptates quam
-            incidunt? Placeat perferendis doloribus nesciunt quas. Quam
-            exercitationem quibusdam magni doloribus corrupti voluptates
-            praesentium aliquid earum saepe aliquam. Facere aperiam dolor
-            debitis quaerat reprehenderit quibusdam sapiente. Corrupti ratione
-            necessitatibus saepe perspiciatis. Atque sit consectetur quas
-            facilis dolorum maiores enim consequatur exercitationem dignissimos
-            explicabo! Unde, qui expedita accusantium ad eum cumque, incidunt
-            nihil ea tempora necessitatibus nulla ipsum. At totam eos inventore.
-            Cumque ratione blanditiis eveniet vel voluptas, consequuntur
-            excepturi. Repellendus odit explicabo at recusandae dolorem
-            exercitationem non alias officia sed consequatur, nisi iste incidunt
-            magni modi, fugiat possimus nihil nulla odio! Doloremque velit
-            beatae, non corrupti laudantium iusto unde, tempora dolorum omnis
-            esse aut eos dolorem minus sunt ex sequi! Aliquam consequatur animi
-            quos quisquam exercitationem nam, eaque sed amet delectus. Ullam
-            maxime est veniam sequi nam necessitatibus corrupti modi qui
-            exercitationem optio minus iure vitae molestiae, magni distinctio
-            magnam totam commodi laborum odit aspernatur reiciendis in officiis.
-            Suscipit, iste ea? Eligendi harum ad similique, est officia quasi,
-            debitis doloribus, error recusandae fugit voluptate minima deleniti
-            quos officiis optio et amet. Consequuntur, nam quia! Iste, ut
-            recusandae fugit eos sapiente optio. Ipsa quaerat eligendi, sunt
-            labore ipsum, quis, magnam corrupti delectus exercitationem
-            reprehenderit animi obcaecati temporibus laborum! Quis
-            exercitationem sed non? Quas iusto fugiat quod sunt impedit, ducimus
-            laborum excepturi praesentium! Totam fugiat aspernatur animi tempora
-            error reprehenderit. Minima doloremque, nostrum mollitia, architecto
-            repellendus earum illum velit sunt eius nesciunt quis obcaecati,
-            dolore culpa. Harum consequuntur voluptates laboriosam id autem
-            odio! Aperiam voluptates nihil a cupiditate in totam maxime maiores
-            deleniti voluptas hic. Quod in optio, nulla eum ab aliquid veniam
-            accusantium corrupti, porro ducimus nostrum repellendus sit quasi
-            omnis explicabo. Quidem, doloribus maxime fugit minima velit
-            perspiciatis quod dolorem, quae, ex aspernatur earum! Consequuntur
-            natus earum, iste repellendus quibusdam incidunt fugiat in quas!
-            Expedita cupiditate doloribus, nemo ullam omnis culpa! Similique
-            necessitatibus nam dolorum quaerat ratione quae a molestias facere,
-            consequuntur, saepe beatae cupiditate dignissimos asperiores
-            perspiciatis soluta minus quia fuga corrupti amet nulla quidem quos?
-            Eveniet perferendis reiciendis nihil? Repellendus qui a enim? Dicta
-            consequatur ex ab, error voluptatum quisquam, recusandae, incidunt
-            eaque aperiam cumque fugiat adipisci culpa maxime nulla illum.
-            Corporis expedita et suscipit similique provident cum dolorem!
-            Voluptate veritatis quidem ab rerum magnam expedita ipsum blanditiis
-            odit delectus non eveniet laudantium ad odio eos sint aliquam,
-            corporis, cupiditate et? Optio fugiat sunt molestiae! Molestiae,
-            saepe. Quisquam, esse. Tempora, nesciunt dolores. Officiis, minus
-            illo architecto veniam possimus dignissimos autem ipsam consectetur
-            rem quo et recusandae totam, sint distinctio. Deserunt officiis
-            ipsum delectus facere dolor suscipit maiores perferendis obcaecati?
-            Dolorem illum, perferendis necessitatibus fugiat exercitationem
-            magni optio sit similique nam aliquam non obcaecati error corrupti
-            ullam nemo inventore accusantium cum doloremque magnam laborum id
-            reprehenderit omnis sapiente sint? Eaque! Debitis eum minus odio
-            accusantium voluptatum, voluptatibus dolorem amet quam possimus
-            neque tenetur cupiditate commodi soluta corporis, error itaque,
-            repellendus libero fugit. Ex voluptates dolorum ut sit vero maxime
-            in. Enim sed et distinctio odit aspernatur quae itaque! Consequuntur
-            autem quidem a aperiam atque sed nulla tempora! Ipsum dolores sint
-            modi enim totam in repellat. Reprehenderit facilis quis optio
-            dignissimos? Tenetur, necessitatibus quisquam enim eos nisi iusto
-            porro obcaecati? Odio distinctio eos, veniam voluptates, possimus
-            accusantium sint fugiat totam harum cumque, praesentium temporibus
-            in qui vero nemo modi vitae aspernatur? Atque assumenda veniam
-            accusamus saepe, ab, omnis nesciunt debitis perspiciatis magni nulla
-            consequatur soluta laudantium. Eos voluptates sunt dolorem deleniti
-            in, culpa aliquid. Reiciendis laudantium temporibus, soluta quasi
-            placeat eligendi. Obcaecati dolore distinctio iste saepe sit vero,
-            corrupti perspiciatis ipsum. Nostrum porro illum consequatur
-            similique. Laborum accusamus nobis aliquam, ut ab distinctio magni
-            dicta nesciunt quae, adipisci necessitatibus molestias sunt?
-            Veritatis mollitia, magnam distinctio accusantium officiis pariatur
-            nobis velit voluptate repellendus. Ad est accusantium iusto atque,
-            architecto perferendis fugit quibusdam. Numquam quasi aspernatur
-            earum in sint dolor quae voluptatibus animi. Vitae, accusamus
-            laborum molestiae placeat commodi aliquid cumque blanditiis vero
-            eaque molestias voluptates unde sunt rem alias reiciendis quas. Sed,
-            cupiditate commodi provident quas placeat ut facilis explicabo modi
-            sapiente. Dicta libero harum sapiente nam debitis, hic error animi!
-            Provident natus corrupti cumque! Commodi, non expedita corrupti quos
-            obcaecati beatae officiis facere recusandae. Eum, magnam ad? Nemo
-            cupiditate sit eius.
-          </p>
-        </div>
-      </aside>
-    </main>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <aside class="calculator__history history" id="history">
+    <nav class="history__navigation">
+      <ul class="history__navigation-list">
+        <li><a href="#" id="history-tab">History</a></li>
+        <li><a href="#" id="memory-tab">Memory</a></li>
+      </ul>
+    </nav>
+
+    <div class="history__content" id="history-content">
+      <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut cupiditate non ab incidunt facilis fugit eius dolor! Necessitatibus laudantium ex tempore, quidem, earum molestias quia neque officia nemo, fugit nisi?
+      Dignissimos, illum architecto obcaecati doloribus ab facilis vero debitis magni. Ad nobis eveniet officiis nemo saepe eius asperiores sed repellendus illum, minima repudiandae, neque pariatur repellat, animi quos ipsa atque?
+      Officiis facere nisi molestiae beatae aut rerum magnam modi cupiditate dignissimos repellat, temporibus non excepturi, placeat minus! Corrupti quo ut distinctio possimus, perspiciatis magnam fugit. Corrupti consectetur veritatis temporibus odio?
+      Nisi dolores iure eos corporis! Aliquid officiis, quasi iusto saepe rerum possimus suscipit iure voluptates natus odit, distinctio sequi, numquam excepturi. Quas vero aspernatur veritatis cum ipsa corporis illum voluptatum.
+      Animi perferendis, porro, iste cum iure deserunt ad corrupti asperiores dolorem commodi sint repellat saepe rem quos vero? Non fugit doloribus laborum eos ratione praesentium mollitia quae molestiae nam? Commodi?
+      Deserunt omnis fugiat minus deleniti rem, perspiciatis id repellat suscipit rerum ex, sunt totam consequuntur sed eius ullam soluta nulla dolores voluptatem quae unde voluptas doloribus quo consequatur quibusdam. Iste?
+      Omnis, obcaecati totam maiores, molestiae at nam voluptatibus corporis in consequatur atque vel iure ratione illum veniam a eos aliquid cupiditate assumenda, aut est iste rem suscipit inventore repellat? Alias!
+      Iusto repudiandae doloremque suscipit iure provident cumque reiciendis eos amet laborum, aliquam possimus magnam inventore ducimus. Maiores sunt necessitatibus enim sequi quasi eos dolorum dignissimos commodi esse, harum quidem voluptates!
+      Culpa perferendis nostrum in eius aspernatur voluptatum adipisci sapiente necessitatibus assumenda, quis ea totam nobis excepturi? Minima delectus obcaecati excepturi veritatis. Sunt doloremque assumenda aliquam deserunt explicabo temporibus earum sed.
+      Ipsam placeat cupiditate reiciendis! Est animi quas, magnam nostrum earum laborum illo iste porro, incidunt vero unde? Doloremque est illo dolorum magnam fugiat saepe. Excepturi et vero quidem quas pariatur.
+      Officia enim id doloribus consectetur voluptas. Obcaecati minima illo harum, perferendis aperiam ratione veritatis beatae blanditiis dignissimos incidunt sit facere neque eveniet nulla corrupti, quae reiciendis numquam magni quis aspernatur?
+      Impedit reprehenderit officia quasi aut quod, possimus, atque hic eos deleniti qui fugiat nesciunt rem animi perspiciatis facere nemo aspernatur harum, doloremque vitae laborum voluptatem? Minima voluptatem obcaecati ullam at?
+      Impedit corporis dignissimos, quis voluptatem a earum, ea vel cupiditate est exercitationem distinctio inventore non tempora voluptas blanditiis sunt quam quo ducimus. Aspernatur quo sequi dignissimos optio, accusantium alias consectetur.
+      Maiores dolor quia libero alias sint dolorum culpa repellat harum, natus quisquam necessitatibus, incidunt adipisci nesciunt debitis quod quo neque autem magni perspiciatis optio praesentium error facere laboriosam. Velit, deleniti!
+      Nemo eius dolorum facilis earum. Ab doloribus, numquam a at harum ipsa, nemo architecto repellat cumque animi praesentium enim corrupti necessitatibus veritatis culpa odit error dignissimos mollitia debitis? Sapiente, impedit!
+      Nobis eum qui accusantium explicabo placeat, harum est assumenda odio. Nemo magnam ex nobis, quidem cumque eius quasi dicta vero placeat. Debitis consequatur ducimus animi natus commodi reprehenderit, deserunt officiis.
+      Iure minima ad numquam vero quisquam dicta dolores esse odio labore consequatur odit explicabo alias velit, quam delectus eos consequuntur. Numquam fugiat ullam non! Vel numquam deleniti doloribus corrupti autem.
+      Praesentium veritatis neque velit dolore ullam molestiae mollitia, ipsa voluptate laudantium eum animi minus, accusamus sed libero dignissimos fuga deserunt doloremque exercitationem voluptates aut voluptatum. Fugiat explicabo sed quisquam modi.
+      Natus repellat labore adipisci illo nesciunt. Dignissimos rerum ratione tempore iusto, modi soluta quae unde veniam repudiandae rem autem incidunt quaerat hic eaque fuga culpa itaque nesciunt ad. Optio, ipsum.
+      Sint tenetur iste laboriosam repellat fugiat obcaecati iure a esse eum eaque! Expedita est consequuntur illum quas sint, nostrum dolores tempore eos ab? Officiis eaque corporis eveniet nesciunt beatae numquam!
+      Eos illo rerum facilis enim asperiores, voluptatem officia! Dignissimos velit fugiat quo officiis sit dolores deserunt cumque at quia sint. Reprehenderit odio beatae repellat maxime corporis vero pariatur repudiandae voluptates.
+      Expedita architecto voluptate dicta et numquam! Eos fuga assumenda quo optio maxime odio aperiam nihil sequi reiciendis tempore laborum omnis eius iste laudantium ducimus nisi in, error ipsa perspiciatis molestias.
+      Hic magnam animi iste nisi explicabo deleniti ex doloribus porro odit soluta ipsa, reiciendis est unde, a laudantium vel natus. Magnam soluta, perferendis accusantium quam est repellendus tenetur! Minus, nulla!
+      Neque aliquam, quidem itaque corrupti pariatur odio modi ducimus nisi expedita optio minima. Magnam consequuntur porro, ullam dolores voluptates, exercitationem est facilis veritatis ipsam esse ut! Ab commodi harum sed.
+      Veritatis, itaque quibusdam excepturi accusantium similique adipisci assumenda quisquam fuga asperiores? Itaque qui dignissimos aperiam illo autem quasi, suscipit similique temporibus amet officiis id, assumenda cupiditate nesciunt et necessitatibus fugiat. </p>
+    </div>
+  </aside>
+</main>
   </body>
 </html>
