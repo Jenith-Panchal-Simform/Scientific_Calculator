@@ -1,9 +1,9 @@
 import calculation from "./calculation.js";
 class Calculator {
-  constructor(inputSelector, gridSelector) {
+  constructor(inputSelector, gridSelector,history) {
     this.input = document.querySelector(inputSelector);
     this.grid = document.querySelector(gridSelector);
-
+    this.history=document.querySelector(history);
     this.grid.addEventListener("click", this.handleClick.bind(this));
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
     this.actions = {
@@ -14,9 +14,10 @@ class Calculator {
       "1/x": () => this.inverse(),
       // abs: () => this.wrap("|"),
       // sqrt: () => this.append("sqrt"),
-      // fact: () => this.append("!"),
+      fact: () => this.append("!"),
       calculate: () => this.calculate(),
     };
+     this.showHistory()
   }
 
   handleClick(e) {
@@ -59,10 +60,15 @@ class Calculator {
   }
 
   calculate() {
+    const question=this.input.value;
     try {
       this.input.value = calculation(this.input.value);
     } catch (err) {
       this.input.value = err.message;
+    }
+    finally{
+        sessionStorage.setItem(question,this.input.value);
+        this.showHistory()
     }
   }
 
@@ -87,7 +93,35 @@ class Calculator {
       this.calculate();
     }
   }
+
+  showHistory()
+  {
+  this.history.innerHTML = "";
+
+  let isEmpty = true;
+
+  for (let i = 0; i < sessionStorage.length; i++) {
+    let key = sessionStorage.key(i);
+
+    if (key === "IsThisFirstTime_Log_From_LiveServer") continue;
+
+    let value = sessionStorage.getItem(key);
+
+    this.history.innerHTML += `
+      <div>
+        <b>Question:</b> ${key} <br>
+        <b>Result:</b> ${value}
+      </div>
+      <br>
+    `;
+
+    isEmpty = false;
+  }
+  if (isEmpty) {
+    this.history.innerHTML = "The history is empty";
+  }
+  }
 }
 
-const c = new Calculator(".calculator__input", "#button-grid");
+const c = new Calculator(".calculator__input", "#button-grid",".history__content");
 console.log(c);
