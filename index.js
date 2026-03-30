@@ -1,70 +1,3 @@
-// document.querySelector("#button-grid").addEventListener("click", handleButtonClick);
-
-// const input = document.querySelector(".calculator__input");
-
-// function handleButtonClick(e) {
-
-//   if(input.value == "0")
-//   {
-//     input.value="";
-//   }
-//   if (!e.target.dataset.value && !e.target.dataset.action) return;
-
-//   const val = e.target.dataset.value ?? e.target.dataset.action ;
-
-//   if (val === "delete") {
-//     if (input.value.length > 1) {
-//       let result = input.value.slice(0, -1); 
-//       input.value = result;
-//     } else {
-//       input.value = "0";
-//     }
-//   }
-
-//   else if (val === "clear") {
-//     input.value = "0";
-//   }
-
-//   else if(val == "pi")
-//   {
-//     input.value+=3.14;
-//   }
-
-//   else if(val=="x2")
-//   {
-//     input.value+='^'+2;
-//   }
-  
-//   else if(val == "1/x")
-//   {
-//     input.value=1+"/"+input.value;
-//   }
-
-//   else if(val == "abs")
-//   {
-//     input.value="|"+input.value+"|"
-//   }
-//   else if(val=="sqrt")
-//   {
-//     input.value='sqrt'+input.value;
-//   }
-//   else if(val=="fact")
-//   {
-//     input.value+="!"
-//   }
-//   else if (val=="calculate")
-//   {
-//     //function call
-//     //res shown to input.val
-//   }
-//   else {
-//     if (input.value === "0") {
-//       input.value = val;  // replace 0
-//     } else {
-//       input.value += val;
-//     }
-//   }
-// }
 import calculation from "./calculation.js"; 
 class Calculator {
   constructor(inputSelector, gridSelector) {
@@ -128,7 +61,13 @@ class Calculator {
   }
 
   calculate() {
-   
+    try{
+        this.input.value=calculation(this.input.value);
+    }
+    catch(err)
+    {
+      this.input.value=err.message;
+    }
   }
 
 }
