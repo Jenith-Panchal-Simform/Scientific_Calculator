@@ -1,9 +1,9 @@
 import calculation from "./calculation.js";
 class Calculator {
-  constructor(inputSelector, gridSelector,history) {
+  constructor(inputSelector, gridSelector, history) {
     this.input = document.querySelector(inputSelector);
     this.grid = document.querySelector(gridSelector);
-    this.history=document.querySelector(history);
+    this.history = document.querySelector(history);
     this.grid.addEventListener("click", this.handleClick.bind(this));
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
     this.actions = {
@@ -17,7 +17,7 @@ class Calculator {
       fact: () => this.append("!"),
       calculate: () => this.calculate(),
     };
-     this.showHistory()
+    this.showHistory();
   }
 
   handleClick(e) {
@@ -60,15 +60,14 @@ class Calculator {
   }
 
   calculate() {
-    const question=this.input.value;
+    const question = this.input.value;
     try {
       this.input.value = calculation(this.input.value);
     } catch (err) {
       this.input.value = err.message;
-    }
-    finally{
-        sessionStorage.setItem(question,this.input.value);
-        this.showHistory()
+    } finally {
+      sessionStorage.setItem(question, this.input.value);
+      this.showHistory();
     }
   }
 
@@ -80,34 +79,30 @@ class Calculator {
       }
       this.append(key);
     }
-    if(e.key=="Backspace")
-    {
+    if (e.key == "Backspace") {
       this.delete();
     }
-    if(e.key=="c" || e.key=="C")
-    {
+    if (e.key == "c" || e.key == "C") {
       this.clear();
     }
-    if(e.key=="Enter")
-    {
+    if (e.key == "Enter") {
       this.calculate();
     }
   }
 
-  showHistory()
-  {
-  this.history.innerHTML = "";
+  showHistory() {
+    this.history.innerHTML = "";
 
-  let isEmpty = true;
+    let isEmpty = true;
 
-  for (let i = 0; i < sessionStorage.length; i++) {
-    let key = sessionStorage.key(i);
+    for (let i = 0; i < sessionStorage.length; i++) {
+      let key = sessionStorage.key(i);
 
-    if (key === "IsThisFirstTime_Log_From_LiveServer") continue;
+      if (key === "IsThisFirstTime_Log_From_LiveServer") continue;
 
-    let value = sessionStorage.getItem(key);
+      let value = sessionStorage.getItem(key);
 
-    this.history.innerHTML += `
+      this.history.innerHTML += `
       <div>
         <b>Question:</b> ${key} <br>
         <b>Result:</b> ${value}
@@ -115,13 +110,17 @@ class Calculator {
       <br>
     `;
 
-    isEmpty = false;
-  }
-  if (isEmpty) {
-    this.history.innerHTML = "The history is empty";
-  }
+      isEmpty = false;
+    }
+    if (isEmpty) {
+      this.history.innerHTML = "The history is empty";
+    }
   }
 }
 
-const c = new Calculator(".calculator__input", "#button-grid",".history__content");
+const c = new Calculator(
+  ".calculator__input",
+  "#button-grid",
+  ".history__content",
+);
 console.log(c);
