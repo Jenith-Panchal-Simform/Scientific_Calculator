@@ -81,9 +81,9 @@ Array.prototype.isEmpty = function () {
           handleCloseBracket();
           break;
   
-        case "!":
-          handleFactorial();
-          break;
+        // case "!":
+        //   handleFactorial();
+        //   break;
   
         default:
           throw new Error("Invalid character: " + char);

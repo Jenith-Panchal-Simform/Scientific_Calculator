@@ -1,11 +1,11 @@
-import calculation from "./calculation.js"; 
+import calculation from "./calculation.js";
 class Calculator {
   constructor(inputSelector, gridSelector) {
     this.input = document.querySelector(inputSelector);
     this.grid = document.querySelector(gridSelector);
 
     this.grid.addEventListener("click", this.handleClick.bind(this));
-
+    document.addEventListener("keydown", this.handleKeyDown.bind(this));
     this.actions = {
       delete: () => this.delete(),
       clear: () => this.clear(),
@@ -15,21 +15,21 @@ class Calculator {
       // abs: () => this.wrap("|"),
       // sqrt: () => this.append("sqrt"),
       // fact: () => this.append("!"),
-      calculate: () => this.calculate()
+      calculate: () => this.calculate(),
     };
   }
 
   handleClick(e) {
     const button = e.target.closest("button");
     if (!button) return;
-  
+
     const val = button.dataset.value ?? button.dataset.action;
     if (!val) return;
-  
+
     if (this.input.value === "0" && val !== "clear") {
       this.input.value = "";
     }
-  
+
     if (this.actions[val]) {
       this.actions[val]();
     } else {
@@ -43,9 +43,7 @@ class Calculator {
 
   delete() {
     this.input.value =
-      this.input.value.length > 1
-        ? this.input.value.slice(0, -1)
-        : "0";
+      this.input.value.length > 1 ? this.input.value.slice(0, -1) : "0";
   }
 
   clear() {
@@ -61,17 +59,35 @@ class Calculator {
   }
 
   calculate() {
-    try{
-        this.input.value=calculation(this.input.value);
-    }
-    catch(err)
-    {
-      this.input.value=err.message;
+    try {
+      this.input.value = calculation(this.input.value);
+    } catch (err) {
+      this.input.value = err.message;
     }
   }
 
+  handleKeyDown(e) {
+    let key = e.key;
+    if (/^[0-9+\-/*%^()]+$/.test(key)) {
+      if (this.input.value === "0") {
+        this.input.value = "";
+      }
+      this.append(key);
+    }
+    if(e.key=="Backspace")
+    {
+      this.delete();
+    }
+    if(e.key=="c" || e.key=="C")
+    {
+      this.clear();
+    }
+    if(e.key=="Enter")
+    {
+      this.calculate();
+    }
+  }
 }
 
-const c=new Calculator(".calculator__input", "#button-grid");
+const c = new Calculator(".calculator__input", "#button-grid");
 console.log(c);
-
