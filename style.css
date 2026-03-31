@@ -60,14 +60,17 @@ button:hover {
   justify-content: center;
   color: var(--color-text-white);
   background-color: var(--color-button-light);
+  overflow: auto;
 }
 .calculator {
   max-width: min(1000px, 90vw);
   width: 100%;
-  height: 70vh;
+  max-height: 600px;
+  height: 600px;
   background-color: var(--background-dark);
   display: flex;
   overflow: auto;
+  flex-shrink:0 ;
 }
 
 /* calculayor left design */
@@ -155,7 +158,8 @@ button:hover {
       position: absolute;
       background-color: var(--color-button-dark);
       padding: var(--space-xxs);
-      display: grid;
+      /* when need to show options,uncomment display grid */
+      /* display: grid; */
       grid-template: repeat(2, 1fr) / repeat(4, 1fr);
       display: none;
     }
@@ -174,7 +178,6 @@ button:hover {
 
 /* buttons design */
 .calculator__btn {
-  padding: var(--space-xs);
   background: none;
   border: none;
   color: var(--color-text-white);
@@ -266,15 +269,10 @@ button:hover {
       display: block;
     }
   }
-
   /* hide history section */
   .calculator__history {
     display: none;
   }
 }
 /* for reduced heights */
-@media screen and (height<500px) {
-  .calculator {
-    height: 90vh;
-  }
-}
+
