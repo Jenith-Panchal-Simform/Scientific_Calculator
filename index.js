@@ -5,7 +5,6 @@ class Calculator {
     this.grid = document.querySelector(gridSelector);
     this.history = document.querySelector(history);
     this.menu = document.querySelector(menuSelector);
-    console.log(this.menu);
     this.main = document.querySelector(mainSelector);
     this.nav = document.querySelector(historyNavSelector);
     this.grid.addEventListener("click", this.handleClick.bind(this));
@@ -151,4 +150,4 @@ const c = new Calculator(
   ".calculator",
   ".history__navigation-list"
 );
-console.log(c);
+
