@@ -59,7 +59,7 @@ function calculation(input) {
         }
         operand.push(Number(num));
         expectingOperand = false;
-      } else {  
+      } else {
         handleCalculator(char);
       }
     }

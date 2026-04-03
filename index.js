@@ -1,11 +1,17 @@
 import calculation from "./calculation.js";
 class Calculator {
-  constructor(inputSelector, gridSelector, history) {
+  constructor(inputSelector, gridSelector, history, menuSelector, mainSelector, historyNavSelector) {
     this.input = document.querySelector(inputSelector);
     this.grid = document.querySelector(gridSelector);
     this.history = document.querySelector(history);
+    this.menu = document.querySelector(menuSelector);
+    console.log(this.menu);
+    this.main = document.querySelector(mainSelector);
+    this.nav = document.querySelector(historyNavSelector);
     this.grid.addEventListener("click", this.handleClick.bind(this));
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
+    this.menu.addEventListener("click", this.toggleMenu.bind(this));
+
     this.actions = {
       delete: () => this.delete(),
       clear: () => this.clear(),
@@ -116,11 +122,33 @@ class Calculator {
       this.history.innerHTML = "The history is empty";
     }
   }
+
+  toggleMenu() {
+    this.history.parentNode.classList.add("history--active");
+    this.main.classList.add("calculator--absolute");
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="#" id="close-history">X</a>`;
+    this.nav.prepend(li);
+    handleCloseHistory();
+    function handleCloseHistory() {
+      const closeBtn = document.querySelector("#close-history");
+      closeBtn.addEventListener("click", () => {
+        closeBtn.remove();
+        closeBtn.removeEventListener("click", handleCloseHistory);
+        document.querySelector(".history--active").classList.remove("history--active");
+        document.querySelector(".calculator--absolute").classList.remove("calculator--absolute");
+      });
+    }
+  }
+
 }
 
 const c = new Calculator(
   ".calculator__input",
   "#button-grid",
   ".history__content",
+  "#menu-toggle",
+  ".calculator",
+  ".history__navigation-list"
 );
 console.log(c);
