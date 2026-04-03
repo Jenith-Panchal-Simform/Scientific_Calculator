@@ -43,15 +43,23 @@ function calculation(input) {
         num += char;
         while (
           i + 1 < inputArr.length &&
-          (!isNaN(inputArr[i + 1]) || inputArr[i + 1] === ".")
+          (
+            !isNaN(inputArr[i + 1]) ||
+            inputArr[i + 1] === "." ||
+            inputArr[i + 1].toLowerCase() === "e" ||
+            (inputArr[i + 1] === "-" && inputArr[i] && inputArr[i].toLowerCase() === "e")
+          )
         ) {
           num += inputArr[i + 1];
           i++;
         }
-
+        //validation for exponential format
+        if (!/^[-+]?\d*\.?\d+(e[-+]?\d+)?$/i.test(num)) {
+          throw new Error("Invalid   " + num);
+        }
         operand.push(Number(num));
         expectingOperand = false;
-      } else {
+      } else {  
         handleCalculator(char);
       }
     }
