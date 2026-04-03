@@ -52,6 +52,9 @@ a {
 button:hover {
   cursor: pointer;
 }
+button:disabled {
+  cursor: not-allowed;
+}
 /* main-container Styling */
 .container {
   height: 100vh;
@@ -184,7 +187,12 @@ button:hover {
 }
 .blocked {
   pointer-events: none;
+  cursor: not-allowed;
 }
+.blocked:hover {
+  cursor: not-allowed;
+}
+
 .muted {
   color: var(--color-text-muted);
 }
