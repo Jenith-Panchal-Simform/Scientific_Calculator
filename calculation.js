@@ -11,7 +11,7 @@ const precedence = new Map([
   ["-", 1],
   ["(", 0],
 ]);
-
+let expectingOperand = true;
 function calculation(input) {
   const inputArr = input.split("");
   const operator = [];
@@ -24,9 +24,23 @@ function calculation(input) {
       if (char === " ") continue;
 
       // number / decimal
-      if (!isNaN(char) || char === ".") {
-        let num = char;
-
+      if (
+        !isNaN(char) ||
+        char === "." ||
+        char === "-" ||
+        (expectingOperand && (char === "+" || char === "-"))
+      ) {
+        let num = "";
+        // handle unary +/-
+        if (char === "+" || char === "-") {
+          num += char;
+          i++;
+          char = inputArr[i];
+        }
+        if (isNaN(char) && char !== ".") {
+          throw new Error("Invalid number");
+        }
+        num += char;
         while (
           i + 1 < inputArr.length &&
           (!isNaN(inputArr[i + 1]) || inputArr[i + 1] === ".")
@@ -36,6 +50,7 @@ function calculation(input) {
         }
 
         operand.push(Number(num));
+        expectingOperand = false;
       } else {
         handleCalculator(char);
       }
@@ -68,23 +83,33 @@ function calculation(input) {
       case "*":
       case "%":
       case "^":
+        if (expectingOperand) {
+          throw new Error("Invalid expression");
+        }
         handleOperations(char);
+        expectingOperand = true;
         break;
 
       case "(":
         operator.push(char);
+        expectingOperand = true;
         break;
 
       case ")":
         handleCloseBracket();
+        expectingOperand = false;
         break;
 
       case "!":
+        if (expectingOperand) {
+          throw new Error("Invalid expression");
+        }
         handleFactorial();
+        expectingOperand = false;
         break;
 
       default:
-        throw new Error("Invalid character: " + char);
+        throw new Error("Invalid : " + char);
     }
   }
 
