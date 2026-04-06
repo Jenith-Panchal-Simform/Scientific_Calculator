@@ -73,7 +73,7 @@ button:hover {
   flex-shrink:0 ;
 }
 
-/* calculayor left design */
+/* calculator left design */
 .calculator__main {
   flex: 6;
   display: flex;
@@ -120,9 +120,6 @@ button:hover {
   align-items: center;
   gap: var(--gap-md);
 }
-.calculator__section--modes:hover {
-  cursor: not-allowed;
-}
 .calculator__section--memory {
   flex: 1;
   display: flex;
@@ -130,8 +127,8 @@ button:hover {
   padding: 0 var(--space-md);
   align-items: center;
 }
-.calculator__section--memory:hover {
-  cursor: not-allowed;
+.disabled{
+  cursor:not-allowed ;
 }
 .calculator__section--main {
   flex: 8;
@@ -149,10 +146,6 @@ button:hover {
     .calculator__trigonometry,
     .calculator__functions {
       position: relative;
-    }
-    .calculator__functions:hover,
-    .calculator__trigonometry:hover {
-      cursor: not-allowed;
     }
     .options {
       position: absolute;
