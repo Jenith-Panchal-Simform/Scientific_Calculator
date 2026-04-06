@@ -27,7 +27,6 @@ function calculation(input) {
       if (
         !isNaN(char) ||
         char === "." ||
-        char === "-" ||
         (expectingOperand && (char === "+" || char === "-"))
       ) {
         let num = "";
