@@ -11,6 +11,7 @@ const precedence = new Map([
   ["-", 1],
   ["(", 0],
 ]);
+
 let expectingOperand = true;
 function calculation(input) {
   const inputArr = input.split("");
